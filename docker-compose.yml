@@ -37,6 +37,6 @@ services:
       expose:
           - 9000
       volumes:
-          - ../perso/laravel-form:/var/www/laravel-form:cached
+          - ../laravel:/var/www/laravel:cached
       links:
           - db
