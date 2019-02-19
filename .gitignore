@@ -1,0 +1,28 @@
+# Composer
+vendor/*
+composer.phar
+
+# Eclipse
+build/
+.project
+.buildpath
+.settings/*
+
+# IntelliJ, PhpStorm, Webstorm
+.idea
+*.iml
+
+# Mac
+.DS_Store
+._.DS_Store
+
+# Docker - MySQL
+/mysql
+/logs
+
+# Divers
+*.orig
+*.old
+
+# Current project
+.env
