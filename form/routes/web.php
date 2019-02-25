@@ -14,3 +14,8 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/forms', 'FormsController@index');
+Route::post('/forms', 'FormsController@display');
+
+Route::get('/forms/create', 'FormsController@create');
