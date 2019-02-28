@@ -15,7 +15,13 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/forms', 'FormsController@index');
+Route::get('/forms', 'FormsController@create');
 Route::post('/forms', 'FormsController@display');
 
-Route::get('/forms/create', 'FormsController@create');
+Route::get('/categories', 'CategoriesController@index');
+Route::post('/categories', 'CategoriesController@store');
+Route::get('/categories/create', 'CategoriesController@create');
+
+Route::get('/products', 'ProductsController@index');
+Route::post('/products', 'ProductsController@store');
+Route::get('/products/create', 'ProductsController@create');

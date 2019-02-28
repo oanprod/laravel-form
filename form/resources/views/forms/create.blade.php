@@ -8,6 +8,8 @@
     <body>
         <h1>Create a new form</h1>
 
+        <h2>{{ $cat() }}</h2>
+
         <form method="POST" action="/forms">
 
             {{ csrf_field() }}
@@ -23,8 +25,6 @@
             <div>
                 <button type="submit">Create form</button>
             </div>
-
         </form>
-
     </body>
 </html>
