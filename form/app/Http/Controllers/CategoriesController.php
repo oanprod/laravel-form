@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Category;
-use http\Env\Request;
 use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Routing\Controller as BaseController;
 use Illuminate\Foundation\Validation\ValidatesRequests;
@@ -19,7 +18,13 @@ class CategoriesController extends BaseController
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function index() {
-        $categories = Category::all();
+        $id = request()->route('id');
+
+        if ($id) {
+            $categories = Category::where('id', $id)->get();
+        } else {
+            $categories = Category::all();
+        }
 
         return view('categories.index',  ['categories' => $categories]);    }
 
