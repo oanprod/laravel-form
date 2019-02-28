@@ -26,3 +26,9 @@ build/
 
 # Current project
 .env
+
+# Docker
+/apache
+/docker-compose.yml
+/docker-entrypoint-initdb.d
+/php7-fpm
