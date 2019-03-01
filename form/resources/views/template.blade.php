@@ -2,7 +2,7 @@
 <html>
     <head>
         <meta charset="utf-8">
-        <title>Formulaire</title>
+        <title>Laravel</title>
         <!-- Latest compiled and minified CSS -->
         <link rel="stylesheet" href="{{ asset('css/app.css') }}">
 

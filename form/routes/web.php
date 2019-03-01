@@ -17,18 +17,20 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-// Form
-Route::get('/forms', 'FormsController@create');
-Route::post('/forms', 'FormsController@display');
-
 // Categories
-Route::get('/categories/{id}', 'CategoriesController@index');
-Route::get('/categories', 'CategoriesController@index');
-Route::post('/categories', 'CategoriesController@store');
-Route::get('/categories/create', 'CategoriesController@create');
+Route::get('/categories/{id}', 'CategoryController@index');
+Route::get('/categories', 'CategoryController@index');
+Route::post('/categories', 'CategoryController@store');
+Route::get('/categories/create', 'CategoryController@create');
 
 // Products
-Route::get('/products', 'ProductsController@index');
-Route::post('/products', 'ProductsController@store');
-Route::get('/products/create', 'ProductsController@create');
+Route::get('/products/{id}', 'ProductController@index');
+Route::get('/products', 'ProductController@index');
+Route::post('/products', 'ProductController@store');
+Route::get('/products/create', 'ProductController@create');
+
+// Colors
+Route::get('/colors', 'ColorController@index');
+Route::post('/colors', 'ColorController@store');
+Route::get('/colors/create', 'ColorController@create');
 

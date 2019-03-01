@@ -3,12 +3,14 @@
 namespace App\Http\Controllers;
 
 use App\Category;
+use App\Color;
+use App\Product;
 use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Routing\Controller as BaseController;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 
-class CategoriesController extends BaseController
+class ProductController extends BaseController
 {
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
 
@@ -21,12 +23,12 @@ class CategoriesController extends BaseController
         $id = request()->route('id');
 
         if ($id) {
-            $categories = Category::where('id', $id)->get();
+            $products = Product::where('id', $id)->get();
         } else {
-            $categories = Category::all();
+            $products = Product::all();
         }
 
-        return view('categories.index',  ['categories' => $categories]);    }
+        return view('products.index',  ['products' => $products]);    }
 
     /**
      * Create form
@@ -34,22 +36,28 @@ class CategoriesController extends BaseController
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function create() {
-        return view('categories.create');
+        $categories = Category::all();
+        $colors = Color::all();
+
+        return view('products.create', ['categories' => $categories, 'colors' => $colors]);
     }
 
     /**
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function store() {
-        $category = new Category();
+        $product = new Product();
 
-        $category->name = request('name');
-        $category->description = request('description');
+        $product->name = request('name');
+        $product->description = request('description');
+        $product->category_id = request('category');
+        $product->price = request('price');
 
-        $category->save();
 
-        $categories = Category::all();
+        $product->save();
 
-        return view('categories.index',  ['categories' => $categories = Category::all()]);
+        $products = Product::all();
+
+        return view('products.index',  ['products' => $products]);
     }
 }

@@ -5,7 +5,7 @@
     @foreach ($products as $product)
         <p>{{ $product->name }}</p>
         <p>{{ $product->description }}</p>
-        <p>{{ $product->category->name }}</p>
+        <p>{{ $product->color->name }}</p>
         <hr>
     @endforeach
 @endsection

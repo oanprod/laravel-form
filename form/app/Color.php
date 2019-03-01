@@ -4,14 +4,14 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Product extends Model
+class Color extends Model
 {
     /**
      * The table associated with the model.
      *
      * @var string
      */
-    protected $table = 'products';
+    protected $table = 'colors';
 
     /**
      * The attributes that are mass assignable.
@@ -19,16 +19,11 @@ class Product extends Model
      * @var array
      */
     protected $fillable = [
-        'name', 'price', 'picture', 'description'
+        'name', 'heat'
     ];
 
-    public function categories()
+    public function products()
     {
-        return $this->belongsToMany('App\Category');
-    }
-
-    public function color()
-    {
-        return $this->belongsToMany('App\Color');
+        return $this->hasMany('App\Product');
     }
 }

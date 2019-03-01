@@ -24,8 +24,8 @@ class Category extends Model
 
     public $timestamps = true;
 
-    public function product()
+    public function products()
     {
-        return $this->hasMany('App\Product');
+        return $this->belongsToMany('App\Product');
     }
 }

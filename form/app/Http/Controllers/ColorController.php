@@ -2,15 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use App\Category;
-use App\Product;
-use http\Env\Request;
+use App\Color;
 use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Routing\Controller as BaseController;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 
-class ProductsController extends BaseController
+class ColorController extends BaseController
 {
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
 
@@ -20,9 +18,15 @@ class ProductsController extends BaseController
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function index() {
-        $products = Product::all();
+        $id = request()->route('id');
 
-        return view('products.index',  ['products' => $products]);    }
+        if ($id) {
+            $colors = Color::where('id', $id)->get();
+        } else {
+            $colors = Color::all();
+        }
+
+        return view('colors.index',  ['colors' => $colors]);    }
 
     /**
      * Create form
@@ -30,27 +34,23 @@ class ProductsController extends BaseController
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function create() {
-        $categories = Category::all();
-
-        return view('products.create', ['categories' => $categories]);
+        return view('colors.create');
     }
 
     /**
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function store() {
-        $product = new Product();
+        $color = new Color();
 
-        $product->name = request('name');
-        $product->description = request('description');
-        $product->category_id = request('category');
-        $product->price = request('price');
+        $color->name = request('name');
+        $color->heat = request('description');
 
 
-        $product->save();
+        $color->save();
 
-        $products = Product::all();
+        $colors = Color::all();
 
-        return view('products.index',  ['products' => $products]);
+        return view('colors.index',  ['colors' => $colors]);
     }
 }
