@@ -6,10 +6,10 @@
         <p>{{ $category->name }}</p>
         <p>{{ $category->description }}</p>
 
-
-        @foreach ($category->products() as $product)
-            {{ dd($product) }}
+        @foreach ($category->families as $family)
+            <p>{{ $family->name }}</p>
         @endforeach
+
         <hr>
     @endforeach
 @endsection

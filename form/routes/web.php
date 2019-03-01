@@ -18,19 +18,27 @@ Route::get('/', function () {
 });
 
 // Categories
+Route::get('/categories/create', 'CategoryController@create');
 Route::get('/categories/{id}', 'CategoryController@index');
 Route::get('/categories', 'CategoryController@index');
 Route::post('/categories', 'CategoryController@store');
-Route::get('/categories/create', 'CategoryController@create');
 
 // Products
+Route::get('/products/create', 'ProductController@create');
 Route::get('/products/{id}', 'ProductController@index');
 Route::get('/products', 'ProductController@index');
 Route::post('/products', 'ProductController@store');
-Route::get('/products/create', 'ProductController@create');
 
 // Colors
+Route::get('/colors/create', 'ColorController@create');
+Route::get('/colors/{id}', 'ColorController@index');
 Route::get('/colors', 'ColorController@index');
 Route::post('/colors', 'ColorController@store');
-Route::get('/colors/create', 'ColorController@create');
+
+// Families
+Route::get('/families/create', 'FamilyController@create');
+Route::get('/families/{id}', 'FamilyController@index');
+Route::get('/families', 'FamilyController@index');
+Route::post('/families', 'FamilyController@store');
+
 

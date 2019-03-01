@@ -4,14 +4,14 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Category extends Model
+class Family extends Model
 {
     /**
      * The table associated with the model.
      *
      * @var string
      */
-    protected $table = 'categories';
+    protected $table = 'families';
 
     /**
      * The attributes that are mass assignable.
@@ -24,13 +24,8 @@ class Category extends Model
 
     public $timestamps = true;
 
-    public function products()
+    public function category()
     {
-        return $this->belongsToMany('App\Product');
-    }
-
-    public function families()
-    {
-        return $this->hasMany('App\Family');
+        return $this->belongsTo('App\Category');
     }
 }
