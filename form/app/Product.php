@@ -22,12 +22,12 @@ class Product extends Model
         'name', 'price', 'picture', 'description'
     ];
 
-    public function categories()
+    public function family()
     {
-        return $this->belongsToMany('App\Category');
+        return $this->belongsTo('App\Family');
     }
 
-    public function color()
+    public function colors()
     {
         return $this->belongsToMany('App\Color');
     }

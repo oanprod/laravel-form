@@ -24,8 +24,13 @@ class Family extends Model
 
     public $timestamps = true;
 
-    public function category()
+    public function products()
     {
-        return $this->belongsTo('App\Category');
+        return $this->hasMany('App\Product');
+    }
+
+    public function categories()
+    {
+        return $this->belongsToMany('App\Category');
     }
 }

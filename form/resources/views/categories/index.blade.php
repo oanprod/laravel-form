@@ -2,14 +2,27 @@
 @section('content')
     <h1>Categories</h1>
 
-    @foreach ($categories as $category)
-        <p>{{ $category->name }}</p>
-        <p>{{ $category->description }}</p>
-
-        @foreach ($category->families as $family)
-            <p>{{ $family->name }}</p>
+    <ul>
+        @foreach ($categories as $category)
+            <li>Category n°{{ $category->id }}
+                <ul>
+                    <li><u>Name :</u> {{ $category->name }}</li>
+                    <li><u>Description :</u> {{ $category->description }}</li>
+                    <li>
+                        <u>Families :</u>
+                        <!-- n:n relationship -->
+                        <ul>
+                            @if (count($category->families))
+                                @foreach ($category->families as $family)
+                                    <li>{{ $family->name }}</li>
+                                @endforeach
+                            @else
+                                <li>No family in that category</li>
+                            @endif
+                        </ul>
+                    </li>
+                </ul>
+            </li>
         @endforeach
-
-        <hr>
-    @endforeach
+    </ul>
 @endsection

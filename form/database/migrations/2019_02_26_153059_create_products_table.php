@@ -19,7 +19,7 @@ class CreateProductsTable extends Migration
         Schema::create('products', function (Blueprint $table) {
             $table->engine = 'InnoDB';
             $table->increments('id');
-            $table->unsignedInteger('color_id');
+            $table->unsignedInteger('family_id');
             $table->string('name');
             $table->double('price')->unsigned();
             $table->string('picture')->nullable();
@@ -27,12 +27,8 @@ class CreateProductsTable extends Migration
             $table->timestamps();
         });
 
-        Schema::table('products', function (Blueprint $table) {
-            $table->foreign('color_id')->references('id')->on('colors');
-        });
-
         DB::table('products')->insert([
-            'color_id' => 1,
+            'family_id' => 1,
             'name' => 'Predator',
             'price' => '129',
             'picture' => 'uploads/predator.jpg',
@@ -41,7 +37,7 @@ class CreateProductsTable extends Migration
             'updated_at'  => Carbon::today()
         ]);
         DB::table('products')->insert([
-            'color_id' => 1,
+            'family_id' => 1,
             'name' => 'Stan Smith',
             'price' => '89',
             'picture' => 'uploads/predator.jpg',
@@ -50,7 +46,7 @@ class CreateProductsTable extends Migration
             'updated_at'  => Carbon::today()
         ]);
         DB::table('products')->insert([
-            'color_id' => 2,
+            'family_id' => 2,
             'name' => 'Green Shirt',
             'price' => '29',
             'picture' => 'uploads/shirt.jpg',
@@ -59,7 +55,7 @@ class CreateProductsTable extends Migration
             'updated_at'  => Carbon::today()
         ]);
         DB::table('products')->insert([
-            'color_id' => 3,
+            'family_id' => 3,
             'name' => 'Red Pant',
             'price' => '49',
             'picture' => 'uploads/pant.jpg',
