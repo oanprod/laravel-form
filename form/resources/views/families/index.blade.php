@@ -1,7 +1,15 @@
 @extends('template')
 @section('content')
-    <h1>Families</h1>
-
+    <div class="row">
+        <div class="col-md-2">
+            <h1>Families</h1>
+        </div>
+        <div class="col-md-2">
+            <a class="btn btn-primary" href="/family/create" title="Create a new family" role="button">
+                Create a new family
+            </a>
+        </div>
+    </div>
     <ul>
         @foreach ($families as $family)
             <li>Family n°{{ $family->id }}

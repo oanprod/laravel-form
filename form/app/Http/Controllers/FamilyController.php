@@ -29,7 +29,7 @@ class FamilyController extends BaseController
             $families = Family::all();
         }
 
-        return view('families.index',  ['families' => $families]);
+        return view('families.index',  ['current' => 'families', 'families' => $families]);
     }
 
     /**
@@ -40,7 +40,7 @@ class FamilyController extends BaseController
     public function create() {
         $categories = Category::all();
 
-        return view('families.create', ['categories' => $categories]);
+        return view('families.create', ['current' => 'families', 'categories' => $categories]);
     }
 
     /**
@@ -53,12 +53,13 @@ class FamilyController extends BaseController
         $family->description = request('description');
         $family->save();
 
+        //update pivot table
         foreach (request('categories') as $category) {
             $family->categories()->attach($category);
         }
 
         $families = Family::all();
 
-        return view('families.index',  ['families' => $families]);
+        return view('families.index',  ['current' => 'families', 'families' => $families]);
     }
 }

@@ -1,6 +1,6 @@
 @extends('template')
 @section('content')
-    <h1>Create a new Product</h1>
+    <h1>Create a new product</h1>
 
     <form method="POST" action="/products">
 
@@ -10,8 +10,8 @@
             <div class="col-md-2">
                 <label for="family">Family : </label>
             </div>
-            <div class="col-md-2">
-                <select name="family" id="family">
+            <div class="col-md-3">
+                <select name="family" id="family" style="width:100%">
                     @foreach ($families as $family)
                         <option value="{{ $family->id }}">{{ $family->name }}</option>
                     @endforeach

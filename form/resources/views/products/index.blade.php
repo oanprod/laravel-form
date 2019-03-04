@@ -1,6 +1,15 @@
 @extends('template')
 @section('content')
-    <h1>Products</h1>
+    <div class="row">
+        <div class="col-md-2">
+            <h1>Products</h1>
+        </div>
+        <div class="col-md-2">
+            <a class="btn btn-primary" href="/product/create" title="Create a new product" role="button">
+                Create a new product
+            </a>
+        </div>
+    </div>
 
     <ul>
     @foreach ($products as $product)

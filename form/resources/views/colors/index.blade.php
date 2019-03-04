@@ -1,7 +1,15 @@
 @extends('template')
 @section('content')
-    <h1>Colors</h1>
-
+    <div class="row">
+        <div class="col-md-2">
+            <h1>Colors</h1>
+        </div>
+        <div class="col-md-2">
+            <a class="btn btn-primary" href="/color/create" title="Create a new color" role="button">
+                Create a new color
+            </a>
+        </div>
+    </div>
     <ul>
         @foreach ($colors as $color)
             <li>Color n°{{ $color->id }}

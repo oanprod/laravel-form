@@ -28,7 +28,7 @@ class ProductController extends BaseController
             $products = Product::all();
         }
 
-        return view('products.index',  ['products' => $products]);    }
+        return view('products.index',  ['current' => 'products', 'products' => $products]);    }
 
     /**
      * Create form
@@ -39,7 +39,7 @@ class ProductController extends BaseController
         $families = Family::all();
         $colors = Color::all();
 
-        return view('products.create', ['families' => $families, 'colors' => $colors]);
+        return view('products.create', ['current' => 'products', 'families' => $families, 'colors' => $colors]);
     }
 
     /**
@@ -54,12 +54,13 @@ class ProductController extends BaseController
         $product->price = request('price');
         $product->save();
 
+        //update pivot table
         foreach (request('colors') as $color) {
             $product->colors()->attach($color);
         }
 
         $products = Product::all();
 
-        return view('products.index',  ['products' => $products]);
+        return view('products.index',  ['current' => 'products', 'products' => $products]);
     }
 }

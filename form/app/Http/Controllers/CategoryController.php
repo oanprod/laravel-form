@@ -26,7 +26,7 @@ class CategoryController extends BaseController
             $categories = Category::all();
         }
 
-        return view('categories.index',  ['categories' => $categories]);    }
+        return view('categories.index',  ['current' => 'categories', 'categories' => $categories]);    }
 
     /**
      * Create form
@@ -34,7 +34,7 @@ class CategoryController extends BaseController
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function create() {
-        return view('categories.create');
+        return view('categories.create', ['current' => 'categories', ]);
     }
 
     /**
@@ -45,11 +45,10 @@ class CategoryController extends BaseController
 
         $category->name = request('name');
         $category->description = request('description');
-
         $category->save();
 
         $categories = Category::all();
 
-        return view('categories.index',  ['categories' => $categories = Category::all()]);
+        return view('categories.index',  ['current' => 'categories', 'categories' => $categories]);
     }
 }

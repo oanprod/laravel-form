@@ -26,7 +26,7 @@ class ColorController extends BaseController
             $colors = Color::all();
         }
 
-        return view('colors.index',  ['colors' => $colors]);    }
+        return view('colors.index',  ['current' => 'colors', 'colors' => $colors]);    }
 
     /**
      * Create form
@@ -34,7 +34,7 @@ class ColorController extends BaseController
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function create() {
-        return view('colors.create');
+        return view('colors.create', ['current' => 'categories']);
     }
 
     /**
@@ -45,12 +45,10 @@ class ColorController extends BaseController
 
         $color->name = request('name');
         $color->heat = request('heat');
-
-
         $color->save();
 
         $colors = Color::all();
 
-        return view('colors.index',  ['colors' => $colors]);
+        return view('colors.index',  ['current' => 'colors', 'colors' => $colors]);
     }
 }

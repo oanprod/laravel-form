@@ -13,28 +13,27 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+// Home
 Route::get('/', function () {
-    return view('welcome');
+    return view('welcome', ['current' => 'home']);
 });
 
 // Categories
-Route::get('/categories/create', 'CategoryController@create');
+Route::get('/category/create', 'CategoryController@create');
 Route::get('/categories/{id?}', 'CategoryController@index');
 Route::post('/categories', 'CategoryController@store');
 
-// Products
-Route::get('/products/create', 'ProductController@create');
-Route::get('/products/{id?}', 'ProductController@index');
-Route::post('/products', 'ProductController@store');
-
-// Colors
-Route::get('/colors/create', 'ColorController@create');
-Route::get('/colors/{id?}', 'ColorController@index');
-Route::post('/colors', 'ColorController@store');
-
 // Families
-Route::get('/families/create', 'FamilyController@create');
+Route::get('/family/create', 'FamilyController@create');
 Route::get('/families/{id?}', 'FamilyController@index');
 Route::post('/families', 'FamilyController@store');
 
+// Colors
+Route::get('/color/create', 'ColorController@create');
+Route::get('/colors/{id?}', 'ColorController@index');
+Route::post('/colors', 'ColorController@store');
 
+// Products
+Route::get('/product/create', 'ProductController@create');
+Route::get('/products/{id?}', 'ProductController@index');
+Route::post('/products', 'ProductController@store');

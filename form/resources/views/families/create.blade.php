@@ -1,6 +1,6 @@
 @extends('template')
 @section('content')
-    <h1>Create a new Family</h1>
+    <h1>Create a new family</h1>
 
     <form method="POST" action="/families">
 
