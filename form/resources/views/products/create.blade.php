@@ -2,7 +2,7 @@
 @section('content')
     <h1>Create a new product</h1>
 
-    <form method="POST" action="/products">
+    <form method="POST" action="/products" enctype="multipart/form-data">
 
         {{ csrf_field() }}
 
@@ -34,28 +34,36 @@
             <div class="col-md-2">
                 <label for="name">Name : </label>
             </div>
-            <div class="col-md-2">
-                <input type="text" name="name" id="name" placeholder="Product name">
+            <div class="col-md-3">
+                <input type="text" name="name" id="name" style="width:100%" placeholder="Product name">
             </div>
         </div>
         <div class="row" style="margin-bottom:10px">
             <div class="col-md-2">
                 <label for="price">Price : </label>
             </div>
-            <div class="col-md-2">
-                <input type="text" name="price" id="price" placeholder="Product price">
+            <div class="col-md-3">
+                <input type="text" name="price" id="price" style="width:100%" placeholder="Product price">
             </div>
         </div>
         <div class="row" style="margin-bottom:10px">
             <div class="col-md-2">
                 <label for="description">Description : </label>
             </div>
-            <div class="col-md-2">
-               <textarea type="text" name="description" placeholder="Product description"></textarea>
+            <div class="col-md-3">
+               <textarea type="text" name="description" style="width:100%" placeholder="Product description"></textarea>
             </div>
         </div>
         <div class="row" style="margin-bottom:10px">
-            <div class="col-md-4">
+            <div class="col-md-2">
+                <label for="description">Picture : </label>
+            </div>
+            <div class="col-md-3">
+                <input type="file" name="picture" style="width:100%">
+            </div>
+        </div>
+        <div class="row" style="margin-bottom:10px">
+            <div class="col-md-5">
                 <button type="submit">Create product</button>
             </div>
         </div>

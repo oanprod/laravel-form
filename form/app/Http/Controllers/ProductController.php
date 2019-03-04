@@ -52,6 +52,16 @@ class ProductController extends BaseController
         $product->description = request('description');
         $product->family_id = request('family');
         $product->price = request('price');
+
+        //Picture
+        $destinationPath = 'images';
+        $file = request('picture');
+        $originalName = $file->getClientOriginalName();
+
+        $file->move($destinationPath, $originalName);
+
+        $product->picture = $destinationPath . '/' . $originalName;
+
         $product->save();
 
         //update pivot table

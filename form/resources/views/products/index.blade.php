@@ -34,6 +34,14 @@
                         @endif
                     </ul>
                 </li>
+                <li>
+                    <u>Picture :</u>
+                    @if ($product->picture)
+                        <img src="{{ $product->picture }}" style="width:10%; height:10%">
+                    @else
+                        No picture for this product
+                    @endif
+                </li>
              </ul>
         </li>
     @endforeach

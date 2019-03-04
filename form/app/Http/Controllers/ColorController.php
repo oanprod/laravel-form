@@ -34,7 +34,7 @@ class ColorController extends BaseController
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function create() {
-        return view('colors.create', ['current' => 'categories']);
+        return view('colors.create', ['current' => 'colors']);
     }
 
     /**

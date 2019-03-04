@@ -36,7 +36,7 @@
         </div>
         <div class="row" style="margin-bottom:10px">
             <div class="col-md-4">
-                <button type="submit">Create product</button>
+                <button type="submit">Create family</button>
             </div>
         </div>
     </form>
