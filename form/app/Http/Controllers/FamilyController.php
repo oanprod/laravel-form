@@ -51,9 +51,11 @@ class FamilyController extends BaseController
 
         $family->name = request('name');
         $family->description = request('description');
-        $family->category_id = request('category');
-
         $family->save();
+
+        foreach (request('categories') as $category) {
+            $family->categories()->attach($category);
+        }
 
         $families = Family::all();
 

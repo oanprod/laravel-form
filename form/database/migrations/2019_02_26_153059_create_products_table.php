@@ -27,6 +27,12 @@ class CreateProductsTable extends Migration
             $table->timestamps();
         });
 
+        Schema::table('products', function(Blueprint $table) {
+            $table->foreign('family_id')->references('id')->on('families')
+                ->onDelete('cascade')
+                ->onUpdate('cascade');
+        });
+
         DB::table('products')->insert([
             'family_id' => 1,
             'name' => 'Predator',

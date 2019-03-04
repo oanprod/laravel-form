@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Category;
 use App\Color;
+use App\Family;
 use App\Product;
 use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Routing\Controller as BaseController;
@@ -36,10 +36,10 @@ class ProductController extends BaseController
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function create() {
-        $categories = Category::all();
+        $families = Family::all();
         $colors = Color::all();
 
-        return view('products.create', ['categories' => $categories, 'colors' => $colors]);
+        return view('products.create', ['families' => $families, 'colors' => $colors]);
     }
 
     /**
@@ -50,11 +50,13 @@ class ProductController extends BaseController
 
         $product->name = request('name');
         $product->description = request('description');
-        $product->category_id = request('category');
+        $product->family_id = request('family');
         $product->price = request('price');
-
-
         $product->save();
+
+        foreach (request('colors') as $color) {
+            $product->colors()->attach($color);
+        }
 
         $products = Product::all();
 

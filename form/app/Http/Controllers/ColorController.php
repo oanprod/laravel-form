@@ -44,7 +44,7 @@ class ColorController extends BaseController
         $color = new Color();
 
         $color->name = request('name');
-        $color->heat = request('description');
+        $color->heat = request('heat');
 
 
         $color->save();

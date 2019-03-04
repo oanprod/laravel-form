@@ -8,12 +8,24 @@
 
         <div class="row" style="margin-bottom:10px">
             <div class="col-md-2">
-                <label for="category">Category : </label>
+                <label for="family">Family : </label>
             </div>
             <div class="col-md-2">
-                <select name="category" id="category">
-                    @foreach ($categories as $category)
-                        <option value="{{ $category->id }}">{{ $category->name }}</option>
+                <select name="family" id="family">
+                    @foreach ($families as $family)
+                        <option value="{{ $family->id }}">{{ $family->name }}</option>
+                    @endforeach
+                </select>
+            </div>
+        </div>
+        <div class="row" style="margin-bottom:10px">
+            <div class="col-md-2">
+                <label for="category">Colors : </label>
+            </div>
+            <div class="col-md-3">
+                <select name="colors[]" id="category" style="width:100%" multiple>
+                    @foreach ($colors as $color)
+                        <option value="{{ $color->id }}">{{ $color->name }}</option>
                     @endforeach
                 </select>
             </div>

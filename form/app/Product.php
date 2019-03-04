@@ -29,6 +29,6 @@ class Product extends Model
 
     public function colors()
     {
-        return $this->belongsToMany('App\Color');
+        return $this->belongsToMany('App\Color')->withTimestamps();
     }
 }

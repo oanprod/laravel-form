@@ -26,6 +26,6 @@ class Category extends Model
 
     public function families()
     {
-        return $this->belongsToMany('App\Family');
+        return $this->belongsToMany('App\Family')->withTimestamps();
     }
 }

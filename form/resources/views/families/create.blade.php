@@ -8,10 +8,10 @@
 
         <div class="row" style="margin-bottom:10px">
             <div class="col-md-2">
-                <label for="category">Category : </label>
+                <label for="categories">Categories : </label>
             </div>
-            <div class="col-md-2">
-                <select name="category" id="category">
+            <div class="col-md-3">
+                <select name="categories[]" id="categories" style="width:100%" multiple>
                     @foreach ($categories as $category)
                         <option value="{{ $category->id }}">{{ $category->name }}</option>
                     @endforeach
