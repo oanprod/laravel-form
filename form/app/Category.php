@@ -22,8 +22,18 @@ class Category extends Model
         'name', 'description'
     ];
 
+    /**
+     * Add timestamp fields
+     *
+     * @var bool
+     */
     public $timestamps = true;
 
+    /**
+     * List all category families
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     */
     public function families()
     {
         return $this->belongsToMany('App\Family')->withTimestamps();

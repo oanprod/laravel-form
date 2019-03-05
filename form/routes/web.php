@@ -14,14 +14,20 @@ use App\Category;
 |
 */
 
-// Home
+/******** Home ******/
+
 Route::get('/', function () {
     return view('welcome', ['current' => 'home']);
 });
 
-// Categories
-Route::get('/category/create', 'CategoryController@create');
+/******** Categories ******/
 
+// Create form
+Route::get('/category/create', function () {
+    return view('categories.create', ['current' => 'categories']);
+});
+
+// Show only one category referenced by id parameter
 Route::get('/category/{id}', function () {
     return view('categories.index', [
         'categories' => Category::where('id', request()->route('id'))->get(),
@@ -30,10 +36,13 @@ Route::get('/category/{id}', function () {
     ]);
 });
 
+// Show all categories
 Route::get('/categories', 'CategoryController@index');
 
+// Store a new category
 Route::post('/categories', 'CategoryController@store');
 
+// Update form
 Route::get('/category/{id}/update', function () {
     return view('categories.update', [
         'category' => Category::find(request()->route('id')),
@@ -41,8 +50,10 @@ Route::get('/category/{id}/update', function () {
     ]);
 });
 
+// Update a category referenced by id parameter
 Route::post('/category/{id}/update', 'CategoryController@update');
 
+// Delete confirmation
 Route::get('/category/{id}/delete', function () {
     return view('categories.delete', [
         'category' => Category::find(request()->route('id')),
@@ -50,22 +61,26 @@ Route::get('/category/{id}/delete', function () {
     ]);
 });
 
+// Delete a category referenced by id parameter
 Route::post('/category/{id}/delete', 'CategoryController@delete');
 
 
-// Families
+/******** Families ******/
+
 Route::get('/family/create', 'FamilyController@create');
 Route::get('/family/{id?}', 'FamilyController@index');
 Route::get('/families', 'FamilyController@index');
 Route::post('/families', 'FamilyController@store');
 
-// Colors
+/******** Colors ******/
+
 Route::get('/color/create', 'ColorController@create');
 Route::get('/color/{id?}', 'ColorController@index');
 Route::get('/colors', 'ColorController@index');
 Route::post('/colors', 'ColorController@store');
 
-// Products
+/******** Products ******/
+
 Route::get('/product/create', 'ProductController@create');
 Route::get('/product/{id?}', 'ProductController@index');
 Route::get('/products', 'ProductController@index');

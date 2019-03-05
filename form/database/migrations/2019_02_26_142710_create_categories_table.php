@@ -15,6 +15,7 @@ class CreateCategoriesTable extends Migration
      */
     public function up()
     {
+        // create table and its fields
         Schema::create('categories', function (Blueprint $table) {
             $table->engine = 'InnoDB';
             $table->increments('id');
@@ -23,6 +24,7 @@ class CreateCategoriesTable extends Migration
             $table->timestamps();
         });
 
+        // add some date on categories table
         DB::table('categories')->insert([
             'name' => 'Shoes',
             'description' => 'Best shoes ever',
@@ -51,6 +53,7 @@ class CreateCategoriesTable extends Migration
      */
     public function down()
     {
+        // drop table
         Schema::dropIfExists('categories');
     }
 }
