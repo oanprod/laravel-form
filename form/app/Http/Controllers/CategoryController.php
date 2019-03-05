@@ -18,15 +18,11 @@ class CategoryController extends BaseController
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function index() {
-        $id = request()->route('id');
+        $all = true;
 
-        if ($id) {
-            $categories = Category::where('id', $id)->get();
-        } else {
-            $categories = Category::all();
-        }
+        $categories = Category::all();
 
-        return view('categories.index',  ['current' => 'categories', 'categories' => $categories]);    }
+        return view('categories.index',  ['current' => 'categories', 'categories' => $categories, 'all' => $all]);    }
 
     /**
      * Create form
@@ -34,7 +30,7 @@ class CategoryController extends BaseController
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function create() {
-        return view('categories.create', ['current' => 'categories', ]);
+        return view('categories.create', ['current' => 'categories']);
     }
 
     /**
@@ -50,5 +46,35 @@ class CategoryController extends BaseController
         $categories = Category::all();
 
         return view('categories.index',  ['current' => 'categories', 'categories' => $categories]);
+    }
+
+    /**
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function update() {
+        $all = false;
+        $category = Category::find(request()->route('id'));
+
+        $category->name = request('name');
+        $category->description = request('description');
+        $category->save();
+
+        $categories = Category::where('id', request()->route('id'))->get();
+
+        return view('categories.index',  ['current' => 'categories', 'categories' => $categories, 'all' => $all]);
+    }
+
+    /**
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function delete() {
+        $all = true;
+        $category = Category::find(request()->route('id'));
+
+        $category->delete();
+
+        $categories = Category::all();
+
+        return view('categories.index',  ['current' => 'categories', 'categories' => $categories, 'all' => $all]);
     }
 }
